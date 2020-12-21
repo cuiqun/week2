@@ -1,0 +1,79 @@
+
+<!-- 右 -->
+<div class="content">
+    <div class="header">
+        <h1 class="page-title">品牌列表</h1>
+    </div>
+
+    <div class="well">
+        <!-- search button -->
+        <form action="{:url('Brand/index')}" method="get" class="form-search">
+            <div class="row-fluid" style="text-align: left;">
+                <div class="pull-left span4 unstyled">
+                    <p> 品牌名称：<input class="input-medium" name="" type="text"></p>
+                </div>
+            </div>
+            <button type="submit" class="btn">查找</button>
+            <a class="btn btn-primary" href="#">新增</a>
+        </form>
+    </div>
+    <div class="well">
+        <!-- table -->
+        <table class="table table-bordered table-hover table-condensed">
+            <thead>
+            <tr>
+                <th>编号</th>
+                <th>品牌名称</th>
+                <th>品牌描述</th>
+                <th>品牌网址</th>
+                <th>品牌logo</th>
+                <th>上下架状态</th>
+                <th>排序框</th>
+                <th>缩略图</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {volist name="data" id="vo"}
+            <tr class="success">
+                <td>{$vo.brand_id}</td>
+                <td><a href="#">{$vo.brand_name}</a></td>
+                <td>{$vo.brand_desc}</td>
+                <td>{$vo.brand_site}</td>
+                <td><img src="__STATIC__/img/goods01_thumb.jpg"></td>
+                <td>
+                    {eq name="$vo.is_show" value="1"}
+                    <h3 style="color: green">√</h3>
+                    {else/}
+                    <h3 style="color: red;">×</h3>
+                    {/eq}
+                </td>
+                <td>{$vo.brand_sort}</td>
+                <td>{$vo.brand_thurm}</td>
+                <td>
+<!--                    <a href="{:url('edit')}?id={$vo.id}"> 编辑 </a>-->
+                    <a href="{:url('Brand/delete')}?id={$vo.id}"> 删除 </a>
+                </td>
+            </tr>
+            {/volist}
+            </tbody>
+        </table>
+        <!-- pagination -->
+        <div class="pagination">
+            <ul>
+                <li><a href="#">Prev</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">Next</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer>
+        <hr>
+        <p>© 2017 <a href="javascript:void(0);" target="_blank">ADMIN</a></p>
+    </footer>
+</div>
